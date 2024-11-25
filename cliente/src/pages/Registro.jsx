@@ -27,7 +27,7 @@ export default function Registrar() {
     <main>
       <form onSubmit={registrar}>
         <input value={nome} type="text" onChange={(event) => setNome(event.target.value)}/> <br/>
-        <input type="email" onChange={(event) => seteEmail(event.target.value)}/> <br/>
+        <input type="email" onChange={(event) => setEmail(event.target.value)}/> <br/>
         <button>Salvar</button>
       </form>
     </main>
