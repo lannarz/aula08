@@ -5,6 +5,9 @@ export default function Registrar() {
 
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [agencia, setAgencia] = useState('');
+  const [localOrigem, setLocalOrigem] = useState('')
 
   const navigation = useNavigate();
 

@@ -60,7 +60,11 @@ export default function Home() {
         <tr key={usuario.id}>
           <td>{usuario.nome}</td>
           <td>{usuario.email}</td>
-          <td><button onClick={() => removerPessoa(usuario.id)}>X</button></td>
+          <td><button onClick={() => removerPessoa(usuario.id)}>X</button>
+            <Link to ={'/alterar/' + usuario.id}>
+            <button> Alterar </button>
+            </Link>
+          </td>
         </tr>
       )}
 
