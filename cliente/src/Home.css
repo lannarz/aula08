@@ -1,0 +1,72 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+main {
+    display: flex;
+    height: 100vh;
+}
+
+.parteEsquerda {
+    flex: 1;
+    background-color: #3c4b40;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    flex-direction: column;
+    text-align: center;
+}
+
+.partedireita {
+    flex: 1;
+    background-color: #f9f9f9;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.campo-grupo {
+    display: flex;
+    gap: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="date"] {
+    flex: 1;
+}
+
+button {
+    padding: 12px;
+    background-color: #3c4b40;
+    color: white;
+    border: 1px solid #3c4b40;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #495a4d;
+}
