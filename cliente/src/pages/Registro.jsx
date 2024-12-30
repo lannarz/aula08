@@ -44,22 +44,87 @@ export default function Registrar() {
     return (
         <main>
             <div className="parteEsquerda">
-                <h1>Formulario </h1>
+                <h1>Bem vindo de volta!</h1>
+                <p>Para se manter conectado conosco, faça login com suas informações pessoais</p>
+                <button className="signInButton">Entrar</button>
             </div>
 
-            <div className="partedireita">
+            <div className="parteDireita">
                 <form onSubmit={registrar}>
-                    <div className="campo-grupo">
-                        <input type="text" value={nome} onChange={(event) => setNome(event.target.value)} placeholder="Nome" required />
-                        <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="E-mail" required />
-                        <input type="tel" value={telefone} onChange={(event) => setTelefone(event.target.value)} placeholder="Telefone" required />
-                        <input type="text" value={agencia} onChange={(event) => setAgencia(event.target.value)} placeholder="Agência" required />
+                    <h1>Formulário de Viagem</h1>
+                    <p>preencha os campos com seus dados:</p>
+                    <input
+                        type="text"
+                        value={nome}
+                        onChange={(event) => setNome(event.target.value)}
+                        placeholder="Nome"
+                        className="inputCampo"
+                        required
+                    />
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(event) => setEmail(event.target.value)}
+                        placeholder="E-mail"
+                        className="inputCampo"
+                        required
+                    />
+                    <div className="campoGrupo">
+                        <input
+                            type="tel"
+                            value={telefone}
+                            onChange={(event) => setTelefone(event.target.value)}
+                            placeholder="Telefone"
+                            className="campoPequeno"
+                            required
+                        />
+                        <input
+                            type="text"
+                            value={agencia}
+                            onChange={(event) => setAgencia(event.target.value)}
+                            placeholder="Agência"
+                            className="campoPequeno"
+                            required
+                        />
                     </div>
-                    <input type="text" value={localOrigem} onChange={(event) => setLocalOrigem(event.target.value)} placeholder="Local de Origem" required />
-                    <input type="text" value={localDestino} onChange={(event) => setLocalDestino(event.target.value)} placeholder="Local de Destino" required />
-                    <input type="date" value={dataInicial} onChange={(event) => setDataInicial(event.target.value)} required />
-                    <input type="date" value={dataFinal} onChange={(event) => setDataFinal(event.target.value)} required />
-                    <button type="submit">Enviar</button>
+                    <div className="campoGrupo">
+                        <input
+                            type="text"
+                            value={localOrigem}
+                            onChange={(event) => setLocalOrigem(event.target.value)}
+                            placeholder="Local de Origem"
+                            className="campoPequeno"
+                            required
+                        />
+                        <input
+                            type="text"
+                            value={localDestino}
+                            onChange={(event) => setLocalDestino(event.target.value)}
+                            placeholder="Local de Destino"
+                            className="campoPequeno"
+                            required
+                        />
+                    </div>
+                    <div className="campoDate">
+                    <input
+                        type="date"
+                        value={dataInicial}
+                        onChange={(event) => setDataInicial(event.target.value)}
+                        className="inputCampo"
+                        placeholder="Data inicial"  // Atualizado
+                        required
+                    />
+                    <input
+                        type="date"
+                        value={dataFinal}
+                        onChange={(event) => setDataFinal(event.target.value)}
+                        className="inputCampo"
+                        placeholder="Data final"  // Atualizado
+                        required
+                    />
+                   </div>
+
+                    <button type="submit" className="submitButton">Enviar</button>
                 </form>
             </div>
         </main>
