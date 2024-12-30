@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 import { Link } from "react-router-dom";
-import "../Home.css";
+import "../pag.css";
 
 
 export default function Home() {

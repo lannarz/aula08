@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../Home.css";
+import "../pag.css";
 
 export default function Registrar() {
     const [nome, setNome] = useState("");
@@ -16,22 +16,27 @@ export default function Registrar() {
     const registrar = async (event) => {
         event.preventDefault();
         try {
+            const dados = {
+                nome,
+                email,
+                telefone,
+                agencia,
+                localOrigem,
+                localDestino,
+                dataInicial,
+                dataFinal,
+            };
+    
             const resposta = await fetch("http://localhost:3000/usuarios", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    nome,
-                    email,
-                    telefone,
-                    agencia,
-                    localOrigem,
-                    localDestino,
-                    dataInicial,
-                    dataFinal,
-                }),
+                body: JSON.stringify(dados),
             });
+    
             if (resposta.ok) {
-                navigate("/");
+                const usuarioCriado = await resposta.json();
+                console.log("Usuário registrado:", usuarioCriado);
+                navigate("/"); 
             } else {
                 alert("Falha ao registrar. Verifique os dados e tente novamente.");
             }
@@ -40,6 +45,8 @@ export default function Registrar() {
             alert("Ocorreu um erro na aplicação.");
         }
     };
+    
+    
 
     return (
         <main>
@@ -52,7 +59,7 @@ export default function Registrar() {
             <div className="parteDireita">
                 <form onSubmit={registrar}>
                     <h1>Formulário de Viagem</h1>
-                    <p>preencha os campos com seus dados:</p>
+                    <p>Preencha os campos com seus dados:</p>
                     <input
                         type="text"
                         value={nome}
@@ -69,6 +76,30 @@ export default function Registrar() {
                         className="inputCampo"
                         required
                     />
+                    <div className="campoGrupo">
+                        <div className="campoDataRotulo">
+                            <label htmlFor="dataInicial">Data Inicial:</label>
+                            <input
+                                type="date"
+                                id="dataInicial"
+                                value={dataInicial}
+                                onChange={(event) => setDataInicial(event.target.value)}
+                                className="campoPequeno"
+                                required
+                            />
+                        </div>
+                        <div className="campoDataRotulo">
+                            <label htmlFor="dataFinal">Data Final:</label>
+                            <input
+                                type="date"
+                                id="dataFinal"
+                                value={dataFinal}
+                                onChange={(event) => setDataFinal(event.target.value)}
+                                className="campoPequeno"
+                                required
+                            />
+                        </div>
+                    </div>
                     <div className="campoGrupo">
                         <input
                             type="tel"
@@ -105,25 +136,6 @@ export default function Registrar() {
                             required
                         />
                     </div>
-                    <div className="campoDate">
-                    <input
-                        type="date"
-                        value={dataInicial}
-                        onChange={(event) => setDataInicial(event.target.value)}
-                        className="inputCampo"
-                        placeholder="Data inicial"  // Atualizado
-                        required
-                    />
-                    <input
-                        type="date"
-                        value={dataFinal}
-                        onChange={(event) => setDataFinal(event.target.value)}
-                        className="inputCampo"
-                        placeholder="Data final"  // Atualizado
-                        required
-                    />
-                   </div>
-
                     <button type="submit" className="submitButton">Enviar</button>
                 </form>
             </div>

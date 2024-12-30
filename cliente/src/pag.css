@@ -61,7 +61,7 @@ main {
 }
 
 form {
-     width: 100%;
+    width: 100%;
     max-width: 530px;
     text-align: center;
 }
@@ -78,45 +78,32 @@ form p {
     color: gray;
 }
 
-.inputCampo {
-    width: 95%;
+.inputCampo, .campoPequeno {
+    width: 100%; /* Ajuste para alinhar os tamanhos */
     padding: 10px;
-    margin: 10px 0;
+    margin: 6px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
-}
-
-.inputDate {
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
+    box-sizing: border-box; /* Garante que o padding não afeta a largura */
 }
 
 .campoGrupo {
-    display: grid;  
-    grid-template-columns: 1fr 1fr;  
-    gap: 10px;
-    margin: 10px 0;
-}
-
-.campoDate {
-    width: 97%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin: -5px 0;
+    gap: 10px;
+    margin: 10px 0;
+}   
+
+.campoDataRotulo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-
-.campoPequeno {
-    width: 90%;  /* Ajusta a largura dos campos menores */
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
+.campoDataRotulo label {
+    font-size: 0.9rem;
+    color: #2c302c;
 }
 
 .submitButton {
