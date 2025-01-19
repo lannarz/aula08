@@ -4,7 +4,6 @@ import "jspdf-autotable";
 import { Link } from "react-router-dom";
 import "../pag.css";
 
-
 export default function Home() {
     const [usuarios, setUsuarios] = useState([]);
 
@@ -20,17 +19,6 @@ export default function Home() {
         };
         buscarUsuario();
     }, []);
-
-    const removerPessoa = async (id) => {
-        try {
-            await fetch("http://localhost:3000/usuarios/" + id, {
-                method: "DELETE",
-            });
-            setUsuarios(usuarios.filter((usuario) => usuario.id !== id));
-        } catch {
-            alert("Ops, algo deu errado!");
-        }
-    };
 
     const exportarPDF = () => {
         const doc = new jsPDF();
@@ -65,7 +53,15 @@ export default function Home() {
 
     return (
         <div>
-            <button className ="gerarPDF" onClick={exportarPDF}>Gerar PDF</button>
+            <h1>Emissão de Relatórios</h1>
+            <div className="botoes">
+                <button className="gerarPDF" onClick={exportarPDF}>
+                    Importar PDF
+                </button>
+                <Link to="/usuarios">
+                    <button className="novoRelatorio">Novo Relatório de Viagem</button>
+                </Link>
+            </div>
             <table>
                 <thead>
                     <tr>
@@ -77,28 +73,29 @@ export default function Home() {
                         <th>Local de Destino</th>
                         <th>Data Inicial</th>
                         <th>Data Final</th>
-                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {usuarios.map((usuario) => (
-                        <tr key={usuario.id}>
-                            <td>{usuario.nome}</td>
-                            <td>{usuario.email}</td>
-                            <td>{usuario.telefone}</td>
-                            <td>{usuario.agencia}</td>
-                            <td>{usuario.localOrigem}</td>
-                            <td>{usuario.localDestino}</td>
-                            <td>{usuario.dataInicial}</td>
-                            <td>{usuario.dataFinal}</td>
-                            <td>
-                                <button onClick={() => removerPessoa(usuario.id)}>Remover</button>
-                                <Link to={"/alterar/" + usuario.id}>
-                                    <button>Alterar</button>
-                                </Link>
+                    {usuarios.length > 0 ? (
+                        usuarios.map((usuario, index) => (
+                            <tr key={usuario.id}>
+                                <td>{usuario.nome || "-"}</td>
+                                <td>{usuario.email || "-"}</td>
+                                <td>{usuario.telefone || "-"}</td>
+                                <td>{usuario.agencia || "-"}</td>
+                                <td>{usuario.localOrigem || "-"}</td>
+                                <td>{usuario.localDestino || "-"}</td>
+                                <td>{usuario.dataInicial || "-"}</td>
+                                <td>{usuario.dataFinal || "-"}</td>
+                            </tr>
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan="8" style={{ textAlign: "center" }}>
+                                Nenhum registro encontrado.
                             </td>
                         </tr>
-                    ))}
+                    )}
                 </tbody>
             </table>
         </div>
