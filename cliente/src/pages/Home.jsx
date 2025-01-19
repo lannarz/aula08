@@ -3,6 +3,7 @@ import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 import { Link } from "react-router-dom";
 import "../pag.css";
+import Header from "./Header";
 
 export default function Home() {
     const [usuarios, setUsuarios] = useState([]);
@@ -53,6 +54,7 @@ export default function Home() {
 
     return (
         <div>
+            <Header />
             <h1>Emissão de Relatórios</h1>
             <div className="botoes">
                 <button className="gerarPDF" onClick={exportarPDF}>

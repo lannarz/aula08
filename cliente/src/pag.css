@@ -126,3 +126,22 @@ form p {
 input[type="date"] {
     color: #666; 
 }
+
+.header {
+    background-color: #3a3f3a;
+    height: 60px;
+    width: 100%;
+    padding: 1px;
+}
+
+.header {
+    background-color: #3a3f3a;
+    padding: 10px;
+    display: flex;
+
+}
+
+.header-logo {
+    height: 50px;
+    padding-left: 13px; 
+}
