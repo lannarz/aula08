@@ -51,7 +51,7 @@ export default function Registrar() {
     return (
         <main>
             <div className="parteEsquerda">
-                <h1>Bem vindo de volta!</h1>
+                <img src="/src/fotos/Lufthansa_Logo.png" alt="Logo" className="header-logo-registro" />
                 <p>Para se manter conectado conosco, faça login com suas informações pessoais</p>
                 <button className="signInButton">Entrar</button>
             </div>

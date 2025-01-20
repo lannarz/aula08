@@ -6,6 +6,23 @@ body, html {
     background-color: #f0f2f5;
 }
 
+/* Garantir que o body ocupe toda a altura da tela */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+  }
+  
+  .footer {
+    background-color: #353a35;
+    color: white;
+    padding: 20px;
+    text-align: center;
+
+  }
+  
+
 main {
     display: flex;
     height: 100vh;
@@ -42,7 +59,7 @@ main {
     cursor: pointer;
     font-size: 1rem;
     transition: 0.3s;
-    border-radius: 30px;
+    border-radius: 13px;
 }
 
 .signInButton:hover {
@@ -129,19 +146,168 @@ input[type="date"] {
 
 .header {
     background-color: #3a3f3a;
-    height: 60px;
-    width: 100%;
-    padding: 1px;
+    padding: 16px 10px; /* Aumentando a altura do header para 16px */
+    display: flex;
+    align-items: center;
+    position: relative;
 }
 
-.header {
-    background-color: #3a3f3a;
-    padding: 10px;
-    display: flex;
+.header::after {
+    content: "";
+    position: absolute;
+    bottom: -2px; /* Ajustando para ficar abaixo dos elementos */
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #d3d3d3;
+    padding-top: 2px;
+}   
 
+.header-logo-registro {
+    height: 35px;
+    padding-left: 13px;
 }
 
 .header-logo {
-    height: 50px;
-    padding-left: 13px; 
+    height: 35px;
+    padding-left: 13px;
 }
+
+.header-options {
+    margin-left: auto; /* Ajusta a posição para a direita */
+    display: flex;
+    align-items: center;
+    gap: 30px; /* Espaço entre os itens */
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: condensed;
+    color: white;
+    padding-right: 50px; /* Espaçamento à direita */
+}
+
+.header-login, 
+.header-sair {
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+.header-menu {
+    position: relative;
+    cursor: pointer;
+}
+
+.menu-title {
+    user-select: none;
+}
+
+.menu-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    list-style: none;
+    padding: 5px 0;
+    margin: 0;
+    width: 120px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.menu-dropdown li {
+    padding: 10px;
+    cursor: pointer;
+    color: black;
+    font-size: 13px;
+}
+
+.menu-dropdown li:hover {
+    background-color: #f0f0f0;
+}
+
+.tabela-movida {
+    border: solid 1px #a69797;
+    width: 90%; 
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.tabela-movida th,
+.tabela-movida td {
+    font-weight: normal; 
+    padding-left: 34px; 
+    text-align: left; 
+}
+
+.tabela-movida th {
+    background-color: #f4f4f4; 
+}
+
+.Central {
+    padding-left: 6%;
+}
+
+.linha {
+    width: 90%;
+    border-bottom: 1px solid #b1a3a3;
+}
+
+.estilizacaoButton {
+    padding: 7px;
+    border: solid 1px #a69797;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+.redes-sociais {
+    width: 100%;
+    text-align: center;
+    color: white;
+    padding-top: 30px;
+  }
+  
+  .tamanhoDaRedesocial {
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  .redes-sociais li {
+    width: 100px;
+  }
+  
+  .tamanhoDaRedeS {
+    width: 65px;
+    height: 60px;
+  }
+  
+  .tamanhoDaRedeInsta {
+    width: 50px;
+    height: 50px;
+    opacity: 1.8;
+  }
+  
+  .descricoes {
+    line-height: 7.0px;
+    text-align: center;
+    color: white;
+    padding-top: 24px;
+    font-family: Arial;
+  }
+  
+  #transparente {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  
+  .footer {
+    background-color: #343a34;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+  }
+
+  

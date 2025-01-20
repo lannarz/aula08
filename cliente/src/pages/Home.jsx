@@ -4,15 +4,18 @@ import "jspdf-autotable";
 import { Link } from "react-router-dom";
 import "../pag.css";
 import Header from "./Header";
+import Footer from "./Footer";
 
 export default function Home() {
     const [usuarios, setUsuarios] = useState([]);
+    const [mostrarTabela, setMostrarTabela] = useState(false); // Controle para mostrar/ocultar os dados da tabela
 
     useEffect(() => {
         const buscarUsuario = async () => {
             try {
                 const resposta = await fetch("http://localhost:3000/usuarios");
                 const dados = await resposta.json();
+                console.log(dados); // Verifique os dados retornados
                 setUsuarios(dados);
             } catch {
                 alert("Ocorreu um erro no app!");
@@ -52,54 +55,59 @@ export default function Home() {
         doc.save("usuarios.pdf");
     };
 
+    const pesquisarTabela = () => {
+        setMostrarTabela(true); // Mostra os dados da tabela após clicar no botão pesquisar
+    };
+
     return (
         <div>
             <Header />
-            <h1>Emissão de Relatórios</h1>
-            <div className="botoes">
-                <button className="gerarPDF" onClick={exportarPDF}>
-                    Importar PDF
-                </button>
-                <Link to="/usuarios">
-                    <button className="novoRelatorio">Novo Relatório de Viagem</button>
-                </Link>
-            </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>E-mail</th>
-                        <th>Telefone</th>
-                        <th>Agência</th>
-                        <th>Local de Origem</th>
-                        <th>Local de Destino</th>
-                        <th>Data Inicial</th>
-                        <th>Data Final</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {usuarios.length > 0 ? (
-                        usuarios.map((usuario, index) => (
-                            <tr key={usuario.id}>
-                                <td>{usuario.nome || "-"}</td>
-                                <td>{usuario.email || "-"}</td>
-                                <td>{usuario.telefone || "-"}</td>
-                                <td>{usuario.agencia || "-"}</td>
-                                <td>{usuario.localOrigem || "-"}</td>
-                                <td>{usuario.localDestino || "-"}</td>
-                                <td>{usuario.dataInicial || "-"}</td>
-                                <td>{usuario.dataFinal || "-"}</td>
-                            </tr>
-                        ))
-                    ) : (
+            <div className="Central">
+                <h1 className="linha">Emissão de Relatórios</h1>
+                <div className="botoes">
+                    <button className="estilizacaoButton" onClick={exportarPDF}>
+                        Gerar PDF
+                    </button>
+                    <Link to="/usuarios">
+                        <button className="estilizacaoButton">Novo Relatório de Viagem</button>
+                    </Link>
+                    <button className="estilizacaoButton" onClick={pesquisarTabela}>
+                        Pesquisar
+                    </button>
+                </div>
+
+                <table className="tabela-movida">
+                    <thead>
                         <tr>
-                            <td colSpan="8" style={{ textAlign: "center" }}>
-                                Nenhum registro encontrado.
-                            </td>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Telefone</th>
+                            <th>Agência</th>
+                            <th>Local de Origem</th>
+                            <th>Local de Destino</th>
+                            <th>Data Inicial</th>
+                            <th>Data Final</th>
                         </tr>
-                    )}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {mostrarTabela &&
+                            usuarios.length > 0 &&
+                            usuarios.map((usuario) => (
+                                <tr key={usuario.id}>
+                                    <td>{usuario.nome || "-"}</td>
+                                    <td>{usuario.email || "-"}</td>
+                                    <td>{usuario.telefone || "-"}</td>
+                                    <td>{usuario.agencia || "-"}</td>
+                                    <td>{usuario.localOrigem || "-"}</td>
+                                    <td>{usuario.localDestino || "-"}</td>
+                                    <td>{usuario.dataInicial || "-"}</td>
+                                    <td>{usuario.dataFinal || "-"}</td>
+                                </tr>
+                            ))}
+                    </tbody>
+                </table>
+            </div>
+            <Footer /> 
         </div>
     );
 }
