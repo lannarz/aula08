@@ -173,6 +173,10 @@ input[type="date"] {
     padding-left: 13px;
 }
 
+.header-logo2 {
+    height: 29px;
+}
+
 .header-options {
     margin-left: auto; /* Ajusta a posição para a direita */
     display: flex;
@@ -183,6 +187,11 @@ input[type="date"] {
     font-stretch: condensed;
     color: white;
     padding-right: 50px; /* Espaçamento à direita */
+}
+
+.header-options span:hover{
+    font-weight: bold;
+    transition: 0.3s;
 }
 
 .header-login, 
@@ -227,10 +236,11 @@ input[type="date"] {
 }
 
 .tabela-movida {
-    border: solid 1px #a69797;
+    border-collapse: collapse;
     width: 90%; 
     margin-top: 20px;
     padding: 10px;
+    border: 1px solid #a69797;
 }
 
 .tabela-movida th,
@@ -241,7 +251,18 @@ input[type="date"] {
 }
 
 .tabela-movida th {
-    background-color: #f4f4f4; 
+    background-color: #464d46;
+    font-weight: bold;
+    color: white;
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid #3a3f3a;
+}
+
+.tabela-movida td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #a69797; /* Linha separadora entre os elementos */
 }
 
 .Central {
@@ -260,6 +281,12 @@ input[type="date"] {
     margin-right: 5px;
 }
 
+.estilizacaoButton:hover{
+    background-color: #3a3f3a;
+    color: white;
+    transition: 0.2s;
+}
+
 .redes-sociais {
     width: 100%;
     text-align: center;
@@ -269,7 +296,7 @@ input[type="date"] {
   
   .tamanhoDaRedesocial {
     font-size: 18px;
-    margin: 0;
+    margin: -25px;
   }
   
   .redes-sociais li {
@@ -291,7 +318,6 @@ input[type="date"] {
     line-height: 7.0px;
     text-align: center;
     color: white;
-    padding-top: 24px;
     font-family: Arial;
   }
   
@@ -310,4 +336,45 @@ input[type="date"] {
     text-align: center;
   }
 
-  
+  .footer2{
+    background-color: white;
+  }
+
+  .tabela-informacoes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin-top: 10px;
+    padding: 10px 0;
+}
+
+.contador-elementos {
+    font-size: 14px;
+    color: #333;
+    margin: 0;
+}
+
+.paginacao {
+    display: flex;
+    gap: 5px;
+}
+
+.btn-paginacao {
+    padding: 6px 10px;
+    border: 1px solid #a69797;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+    color: #333;
+}
+
+.pagina-atual {
+    padding: 5px 15px;
+    background-color: #555;
+    color: #fff;
+    border: 1px solid #a69797;
+    font-size: 14px;
+    text-align: center;
+}
+

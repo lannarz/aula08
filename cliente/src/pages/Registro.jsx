@@ -4,13 +4,13 @@ import "../pag.css";
 
 export default function Registrar() {
     const [nome, setNome] = useState("");
-    const [email, setEmail] = useState("");
     const [telefone, setTelefone] = useState("");
     const [agencia, setAgencia] = useState("");
     const [localOrigem, setLocalOrigem] = useState("");
     const [localDestino, setLocalDestino] = useState("");
     const [dataInicial, setDataInicial] = useState("");
     const [dataFinal, setDataFinal] = useState("");
+    const [email, setEmail] = useState("");  // Re-adicionando o campo de email
     const navigate = useNavigate();
 
     const registrar = async (event) => {
@@ -18,25 +18,25 @@ export default function Registrar() {
         try {
             const dados = {
                 nome,
-                email,
                 telefone,
                 agencia,
                 localOrigem,
                 localDestino,
                 dataInicial,
                 dataFinal,
+                email,  // Incluindo o email no envio
             };
-    
+
             const resposta = await fetch("http://localhost:3000/usuarios", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(dados),
             });
-    
+
             if (resposta.ok) {
                 const usuarioCriado = await resposta.json();
                 console.log("Usuário registrado:", usuarioCriado);
-                navigate("/"); 
+                navigate("/");  // Redireciona após o registro
             } else {
                 alert("Falha ao registrar. Verifique os dados e tente novamente.");
             }
@@ -45,8 +45,6 @@ export default function Registrar() {
             alert("Ocorreu um erro na aplicação.");
         }
     };
-    
-    
 
     return (
         <main>
@@ -69,11 +67,27 @@ export default function Registrar() {
                         required
                     />
                     <input
-                        type="email"
+                        type="email"  // Campo de email
                         value={email}
                         onChange={(event) => setEmail(event.target.value)}
                         placeholder="E-mail"
                         className="inputCampo"
+                        required
+                    />
+                    <input
+                        type="tel"
+                        value={telefone}
+                        onChange={(event) => setTelefone(event.target.value)}
+                        placeholder="Telefone"
+                        className="campoPequeno"
+                        required
+                    />
+                    <input
+                        type="text"
+                        value={agencia}
+                        onChange={(event) => setAgencia(event.target.value)}
+                        placeholder="Agência"
+                        className="campoPequeno"
                         required
                     />
                     <div className="campoGrupo">
@@ -100,24 +114,7 @@ export default function Registrar() {
                             />
                         </div>
                     </div>
-                    <div className="campoGrupo">
-                        <input
-                            type="tel"
-                            value={telefone}
-                            onChange={(event) => setTelefone(event.target.value)}
-                            placeholder="Telefone"
-                            className="campoPequeno"
-                            required
-                        />
-                        <input
-                            type="text"
-                            value={agencia}
-                            onChange={(event) => setAgencia(event.target.value)}
-                            placeholder="Agência"
-                            className="campoPequeno"
-                            required
-                        />
-                    </div>
+
                     <div className="campoGrupo">
                         <input
                             type="text"

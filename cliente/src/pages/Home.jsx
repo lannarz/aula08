@@ -11,43 +11,54 @@ export default function Home() {
     const [mostrarTabela, setMostrarTabela] = useState(false); // Controle para mostrar/ocultar os dados da tabela
 
     useEffect(() => {
-        const buscarUsuario = async () => {
+        const buscarUsuarios = async () => {
             try {
                 const resposta = await fetch("http://localhost:3000/usuarios");
                 const dados = await resposta.json();
-                console.log(dados); // Verifique os dados retornados
+                console.log(dados); 
                 setUsuarios(dados);
             } catch {
                 alert("Ocorreu um erro no app!");
             }
         };
-        buscarUsuario();
+        buscarUsuarios();
     }, []);
+    
+    // Função para excluir um usuário
+    const removerPessoa = async (id) => {
+        try {
+            await fetch(`http://localhost:3000/usuarios/${id}`, {
+                method: 'DELETE',
+            });
+            setUsuarios(usuarios.filter(usuario => usuario.id !== id)); // Atualiza a lista após a exclusão
+        } catch {
+            alert('Erro ao remover usuário');
+        }
+    };
 
+    // Função para exportar dados para PDF
     const exportarPDF = () => {
         const doc = new jsPDF();
         const tabela = usuarios.map((usuario) => [
             usuario.nome,
-            usuario.email,
             usuario.telefone,
             usuario.agencia,
-            usuario.localOrigem,
-            usuario.localDestino,
             usuario.dataInicial,
             usuario.dataFinal,
+            usuario.localOrigem,
+            usuario.localDestino,
         ]);
         doc.text("Lista de Usuários", 10, 10);
         doc.autoTable({
             head: [
                 [
                     "Nome",
-                    "E-mail",
                     "Telefone",
                     "Agência",
-                    "Local de Origem",
-                    "Local de Destino",
                     "Data Inicial",
                     "Data Final",
+                    "Local de Origem",
+                    "Local de Destino",
                 ],
             ],
             body: tabela,
@@ -55,6 +66,7 @@ export default function Home() {
         doc.save("usuarios.pdf");
     };
 
+    // Função para mostrar a tabela
     const pesquisarTabela = () => {
         setMostrarTabela(true); // Mostra os dados da tabela após clicar no botão pesquisar
     };
@@ -72,7 +84,7 @@ export default function Home() {
                         <button className="estilizacaoButton">Novo Relatório de Viagem</button>
                     </Link>
                     <button className="estilizacaoButton" onClick={pesquisarTabela}>
-                        Pesquisar
+                        Listar Relatório
                     </button>
                 </div>
 
@@ -80,13 +92,13 @@ export default function Home() {
                     <thead>
                         <tr>
                             <th>Nome</th>
-                            <th>E-mail</th>
                             <th>Telefone</th>
                             <th>Agência</th>
-                            <th>Local de Origem</th>
-                            <th>Local de Destino</th>
                             <th>Data Inicial</th>
                             <th>Data Final</th>
+                            <th>Local de Origem</th>
+                            <th>Local de Destino</th>
+                            <th>Ações</th> {/* Coluna para os botões de alterar e excluir */}
                         </tr>
                     </thead>
                     <tbody>
@@ -95,19 +107,41 @@ export default function Home() {
                             usuarios.map((usuario) => (
                                 <tr key={usuario.id}>
                                     <td>{usuario.nome || "-"}</td>
-                                    <td>{usuario.email || "-"}</td>
                                     <td>{usuario.telefone || "-"}</td>
                                     <td>{usuario.agencia || "-"}</td>
-                                    <td>{usuario.localOrigem || "-"}</td>
-                                    <td>{usuario.localDestino || "-"}</td>
                                     <td>{usuario.dataInicial || "-"}</td>
                                     <td>{usuario.dataFinal || "-"}</td>
+                                    <td>{usuario.localOrigem || "-"}</td>
+                                    <td>{usuario.localDestino || "-"}</td>
+                                    <td>
+                                        <Link to={`/alterar/${usuario.id}`}>
+                                            <button className="estilizacaoButton">
+                                                Alterar
+                                            </button>
+                                        </Link>
+                                        <button
+                                            className="estilizacaoButton"
+                                            onClick={() => removerPessoa(usuario.id)}
+                                        >
+                                            Excluir
+                                        </button>
+                                    </td>
                                 </tr>
                             ))}
                     </tbody>
                 </table>
+                <div className="tabela-informacoes">
+                    <p className="contador-elementos">
+                        Mostrando {usuarios.length} de {usuarios.length} elementos
+                    </p>
+                    <div className="paginacao">
+                        <button className="btn-paginacao">Anterior</button>
+                        <span className="pagina-atual">1</span>
+                        <button className="btn-paginacao">Próximo</button>
+                    </div>
+                </div>
             </div>
-            <Footer /> 
+            <Footer />
         </div>
     );
 }
