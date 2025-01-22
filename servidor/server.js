@@ -8,13 +8,22 @@ app.use(cors());
 let usuarios = [];
 
 app.post('/usuarios', (req, res) => {
-    const { nome, email } = req.body;
+    const { nome, telefone, agencia, localOrigem, localDestino, dataInicial, dataFinal } = req.body;
     
-    if (!nome || !email) {
-        return res.status(400).json({ erro: 'Nome e email são obrigatórios' });
+    if (!nome || !telefone || !agencia || !localOrigem || !localDestino || !dataInicial || !dataFinal) {
+        return res.status(400).json({ erro: 'Todos os campos são obrigatórios' });
     }
 
-    const novoUsuario = { id: usuarios.length + 1, nome, email };
+    const novoUsuario = { 
+        id: usuarios.length + 1, 
+        nome, 
+        telefone, 
+        agencia, 
+        localOrigem, 
+        localDestino, 
+        dataInicial, 
+        dataFinal 
+    };
     usuarios.push(novoUsuario);
     
     res.status(201).json(novoUsuario);
@@ -37,7 +46,7 @@ app.get('/usuarios/:id', (req, res) => {
 
 app.put('/usuarios/:id', (req, res) => {
     const { id } = req.params;
-    const { nome, email } = req.body;
+    const { nome, telefone, agencia, localOrigem, localDestino, dataInicial, dataFinal } = req.body;
     
     const usuario = usuarios.find(u => u.id === parseInt(id));
     
@@ -46,7 +55,12 @@ app.put('/usuarios/:id', (req, res) => {
     }
     
     usuario.nome = nome || usuario.nome;
-    usuario.email = email || usuario.email;
+    usuario.telefone = telefone || usuario.telefone;
+    usuario.agencia = agencia || usuario.agencia;
+    usuario.localOrigem = localOrigem || usuario.localOrigem;
+    usuario.localDestino = localDestino || usuario.localDestino;
+    usuario.dataInicial = dataInicial || usuario.dataInicial;
+    usuario.dataFinal = dataFinal || usuario.dataFinal;
     
     res.status(200).json(usuario);
 });

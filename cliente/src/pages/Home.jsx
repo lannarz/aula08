@@ -24,19 +24,19 @@ export default function Home() {
         buscarUsuarios();
     }, []);
     
-    // Função para excluir um usuário
+
     const removerPessoa = async (id) => {
         try {
             await fetch(`http://localhost:3000/usuarios/${id}`, {
                 method: 'DELETE',
             });
-            setUsuarios(usuarios.filter(usuario => usuario.id !== id)); // Atualiza a lista após a exclusão
+            setUsuarios(usuarios.filter(usuario => usuario.id !== id)); 
         } catch {
             alert('Erro ao remover usuário');
         }
     };
 
-    // Função para exportar dados para PDF
+
     const exportarPDF = () => {
         const doc = new jsPDF();
         const tabela = usuarios.map((usuario) => [
@@ -66,9 +66,9 @@ export default function Home() {
         doc.save("usuarios.pdf");
     };
 
-    // Função para mostrar a tabela
+
     const pesquisarTabela = () => {
-        setMostrarTabela(true); // Mostra os dados da tabela após clicar no botão pesquisar
+        setMostrarTabela(true); 
     };
 
     return (
@@ -91,14 +91,14 @@ export default function Home() {
                 <table className="tabela-movida">
                     <thead>
                         <tr>
-                            <th>Nome</th>
+                            <th className="centralizarNome">Nome</th>
                             <th>Telefone</th>
                             <th>Agência</th>
                             <th>Data Inicial</th>
                             <th>Data Final</th>
                             <th>Local de Origem</th>
                             <th>Local de Destino</th>
-                            <th>Ações</th> {/* Coluna para os botões de alterar e excluir */}
+                            <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>

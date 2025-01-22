@@ -10,7 +10,6 @@ export default function Registrar() {
     const [localDestino, setLocalDestino] = useState("");
     const [dataInicial, setDataInicial] = useState("");
     const [dataFinal, setDataFinal] = useState("");
-    const [email, setEmail] = useState("");  // Re-adicionando o campo de email
     const navigate = useNavigate();
 
     const registrar = async (event) => {
@@ -24,7 +23,6 @@ export default function Registrar() {
                 localDestino,
                 dataInicial,
                 dataFinal,
-                email,  // Incluindo o email no envio
             };
 
             const resposta = await fetch("http://localhost:3000/usuarios", {
@@ -36,7 +34,7 @@ export default function Registrar() {
             if (resposta.ok) {
                 const usuarioCriado = await resposta.json();
                 console.log("Usuário registrado:", usuarioCriado);
-                navigate("/");  // Redireciona após o registro
+                navigate("/"); 
             } else {
                 alert("Falha ao registrar. Verifique os dados e tente novamente.");
             }
@@ -66,14 +64,7 @@ export default function Registrar() {
                         className="inputCampo"
                         required
                     />
-                    <input
-                        type="email"  // Campo de email
-                        value={email}
-                        onChange={(event) => setEmail(event.target.value)}
-                        placeholder="E-mail"
-                        className="inputCampo"
-                        required
-                    />
+                
                     <input
                         type="tel"
                         value={telefone}
@@ -133,7 +124,8 @@ export default function Registrar() {
                             required
                         />
                     </div>
-                    <button type="submit" className="submitButton">Enviar</button>
+                    <button type="submit" className="submitButton" style={{ display: 'block', margin: '20px auto' }}>Enviar</button>
+
                 </form>
             </div>
         </main>
