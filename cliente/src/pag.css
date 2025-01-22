@@ -79,8 +79,7 @@ main {
 
 form {
     width: 100%;
-    max-width: 530px;
-    text-align: center;
+    max-width: 425px;
 }
 
 form h1 {
@@ -378,3 +377,25 @@ input[type="date"] {
     text-align: center;
 }
 
+.mainAlterar{
+    padding-left: 100px;
+}
+
+.mainAlterar h2{
+    width: 90%;
+    border-bottom: 1px solid #b1a3a3;
+    padding-top: 10px;
+    font-size: 26px;
+    padding-bottom: 8px;
+}
+
+.mainAlterar input{
+    width: 100%;
+    padding: 8px;
+    margin: 6px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+}

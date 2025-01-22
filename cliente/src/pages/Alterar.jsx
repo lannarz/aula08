@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "./Header";
-import Footer from "./Footer";  // Certifique-se de importar o Footer corretamente
+import Footer from "./Footer";  
+import { Link } from "react-router-dom";
 
 export default function Alterar() {
   const { id } = useParams();  // Captura o id da URL
@@ -25,7 +26,8 @@ export default function Alterar() {
   return (
     <div>
       <Header /> 
-      <h2>Alterar Usuário: {usuario.nome}</h2>
+      <div className="mainAlterar">
+      <h2>Alterar Dados de Registro: {usuario.nome}</h2>
       <form>
         <label>
           Nome:
@@ -35,10 +37,13 @@ export default function Alterar() {
           Telefone:
           <input type="text" defaultValue={usuario.telefone} />
         </label>
-     
+     <Link to="/">
         <button type="submit">Salvar Alterações</button>
+       </Link>
       </form>
+      </div>
       <Footer /> 
     </div>
   );
 }
+
