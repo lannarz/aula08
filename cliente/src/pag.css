@@ -82,9 +82,12 @@ form {
     max-width: 500px;
 }
 
-.DadosAltear{
-    width: 100%;
-    max-width: 425px;
+.DadosAlterar {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 500px;
+    margin-top: 20px;
 }
 
 form h1 {
@@ -423,11 +426,11 @@ input[type="date"] {
     text-align: center;
 }
 
-.mainAlterar{
+.mainAlterar {
     padding-left: 100px;
 }
 
-.mainAlterar h2{
+.mainAlterar h2 {
     width: 90%;
     border-bottom: 1px solid #b1a3a3;
     padding-top: 10px;
@@ -440,16 +443,15 @@ input[type="date"] {
     padding: 8px;
     margin: 6px 0;
     border: 1px solid #ccc;
-    border-radius: 5px;
     font-size: 1rem;
     box-sizing: border-box;
-    margin-bottom: 16px;
+    margin-bottom: 16
 }
 
-.esquerdaAlterar{
-   
-}
+    .CampoComponente{
+        background-color: #343a34;
+        color: white;
+        width: 100%;
+        height: 35px;
+    }
 
-.direitaAlterar{
-   
-}

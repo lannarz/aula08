@@ -58,49 +58,47 @@
 
     return (
       <div>
-        <Header />
-        <div className="mainAlterar">
-          <h2>Alterar Dados de Registro: {id}</h2>
-          <form className="DadosAltear" onSubmit={alterar}>
+      <Header />
+      <div className="mainAlterar">
+        <h2>Alterar Dados de Registro: {id}</h2>
+        <form className="DadosAlterar" onSubmit={alterar}>
           <div className="esquerdaAlterar">
-            <label>
+            <label className="CampoComponente">
               Nome:
               <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} />
             </label>
-            <label>
+            <label className="CampoComponente">
               Telefone:
               <input type="text" value={telefone} onChange={(e) => setTelefone(e.target.value)} />
             </label>
-            <label>
+            <label className="CampoComponente">
               Agência:
               <input type="text" value={agencia} onChange={(e) => setAgencia(e.target.value)} />
             </label>
-            <div className="location-fields">
-              <label>
-                Local de Origem:
-                <input type="text" value={localOrigem} onChange={(e) => setLocalOrigem(e.target.value)} />
-              </label>
-              <label>
-                Local de Destino:
-                <input type="text" value={localDestino} onChange={(e) => setLocalDestino(e.target.value)} />
-              </label>
-            </div>
+            <label className="CampoComponente">
+              Local de Origem:
+              <input type="text" value={localOrigem} onChange={(e) => setLocalOrigem(e.target.value)} />
+            </label>
+            <label className="CampoComponente">
+              Local de Destino:
+              <input type="text" value={localDestino} onChange={(e) => setLocalDestino(e.target.value)} />
+            </label>
           </div>
-
-            <div className="direitaAlterar">
-            <label>
+    
+          <div className="direitaAlterar">
+            <label className="CampoComponente">
               Data Inicial:
               <input type="date" value={dataInicial} onChange={(e) => setDataInicial(e.target.value)} />
             </label>
-            <label>
+            <label className="CampoComponente">
               Data Final:
               <input type="date" value={dataFinal} onChange={(e) => setDataFinal(e.target.value)} />
             </label>
             <button type="submit">Salvar Alterações</button>
-            </div>
-          </form>
-        </div>
-      
+          </div>
+        </form>
       </div>
+    </div>
+    
     );
   }
