@@ -53,7 +53,7 @@ export default function Registrar() {
             </div>
 
             <div className="parteDireita">
-                <form onSubmit={registrar}>
+                <form className="formAlterar" onSubmit={registrar}>
                     <h1>Formulário de Viagem</h1>
                     <p>Preencha os campos com seus dados:</p>
                     <input
@@ -107,7 +107,7 @@ export default function Registrar() {
                     </div>
 
                     <div className="campoGrupo">
-                        <input
+                        <input 
                             type="text"
                             value={localOrigem}
                             onChange={(event) => setLocalOrigem(event.target.value)}

@@ -64,41 +64,43 @@
         <form className="DadosAlterar" onSubmit={alterar}>
           <div className="esquerdaAlterar">
             <label className="CampoComponente">
-              Nome:
+            <div className="CamadaCinza">  Nome: </div> 
               <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} />
             </label>
             <label className="CampoComponente">
-              Telefone:
+            <div className="CamadaCinza"> Telefone: </div>
               <input type="text" value={telefone} onChange={(e) => setTelefone(e.target.value)} />
             </label>
             <label className="CampoComponente">
-              Agência:
+            <div className="CamadaCinza">Agência:</div>
               <input type="text" value={agencia} onChange={(e) => setAgencia(e.target.value)} />
             </label>
             <label className="CampoComponente">
-              Local de Origem:
+            <div className="CamadaCinza">Local de Origem: </div>
               <input type="text" value={localOrigem} onChange={(e) => setLocalOrigem(e.target.value)} />
             </label>
             <label className="CampoComponente">
-              Local de Destino:
+            <div className="CamadaCinza"> Local de Destino:</div>
               <input type="text" value={localDestino} onChange={(e) => setLocalDestino(e.target.value)} />
             </label>
           </div>
     
-          <div className="direitaAlterar">
+          <div className="direiaAlterar">
             <label className="CampoComponente">
-              Data Inicial:
+            <div className="CamadaCinza">Data Inicial:</div>
               <input type="date" value={dataInicial} onChange={(e) => setDataInicial(e.target.value)} />
             </label>
             <label className="CampoComponente">
-              Data Final:
+            <div className="CamadaCinza">Data Final:</div>
               <input type="date" value={dataFinal} onChange={(e) => setDataFinal(e.target.value)} />
             </label>
-            <button type="submit">Salvar Alterações</button>
+            <button className="botaoSalvarAlterar" type="submit">Salvar Alterações</button>
           </div>
         </form>
       </div>
+          <Footer/>
     </div>
     
-    );
+  );
+ 
   }
