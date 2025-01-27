@@ -48,7 +48,7 @@ export default function Home() {
             usuario.localOrigem,
             usuario.localDestino,
         ]);
-        doc.text("Lista de Usuários", 10, 10);
+        doc.text("Lista de Viagens", 10, 10);
         doc.autoTable({
             head: [
                 [
@@ -63,7 +63,7 @@ export default function Home() {
             ],
             body: tabela,
         });
-        doc.save("usuarios.pdf");
+        doc.save("viagens.pdf");
     };
 
 
